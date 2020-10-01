@@ -1,0 +1,56 @@
+Task 0：
+Worst case time complexity: O(1)
+1. print the first row of texts: O(1)
+2. print the first row of calls: O(1)
+As we can see that we only output the first and the last element so that running time will not increase as the increase of inputs.
+
+Task 1:
+Worst case time complexity: O(n)
+0. initiate a set: O(1)
+1. for loop go through each line in texts: O(n)
+2. update the set if we have a new number from texts: O(1) + O(1)
+3. for loop go through each line in calls: O(n)
+4. update the set if we have a new number from calls: O(1) + O(1)
+overall worst case complexity = O(n*2)+O(n*2) = O(n)
+
+Set is a hashing container and the complexity of .add() is O(1). 
+Also, the complexity of for loop is O(n), as we have to go throught each element,
+and the running time increases linearly as the increase of the input size.
+Therefore, the worst case complexity is O(n) = O(n)
+
+Task 2:
+Worst case time complexity: O(n)
+0. initiate a dictionary: O(1)
+1. for loop go through each line in calls: O(n)
+2. check if the caller number exists in the dictionary: O(1)
+3. update the total time on the phone for that phone number: O(1)
+4. check if the answering number exists in the dictionary: O(1)
+5. update the total time on the phone for that phone number: O(1)
+6. for loop to find the number with the maximum time on the phone: O(n)
+Therefore, the over all worst case time complexity: O(n). 
+As we know that dictionary is a hashing container,
+the complexity to check if the element if already in the set is O(1),
+and the complexity of accessing the element is O(1).
+
+Task3:
+Worst case time complexity: O(n)
+0. initiate two sets and two variabes to count the number: O(1)
+1. for loop go through each line in calls: O(n)
+2. check the type of the number: O(1)
+3. update the code sets using the .add() function: O(1) 
+4. print out the results: O(n) + O(1)
+Overall worst case complexity: O(1)+O(n)+O(n)+O(1) = O(n)
+Here we again uses the .add() built-in function within set() and it has a
+complexity of O(1).
+
+Task4: O(n)
+Worst case time complexity: O(n)
+0. initiate four sets: O(1)
+1. for loop go through each line in texts: O(n)
+2. update the two text sets using the add() function: O(2)
+3. for loop go through each line in calls: O(n)
+4. update the two call sets using the add() function: O(2)
+5. get the difference between the sets to have the unique element in set call_out: O(n)
+5. for loop print out the unique elements: O(n)
+Overall worst case complexity: O(1) + O(n * 2) + O(n * 2) + O(n) + O(n) = O(n)
+
