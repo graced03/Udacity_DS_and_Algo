@@ -10,6 +10,7 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
+        self.tail = None
 
     def __str__(self):
         cur_head = self.head
@@ -19,18 +20,14 @@ class LinkedList:
             cur_head = cur_head.next
         return out_string
 
-
     def append(self, value):
-
         if self.head is None:
             self.head = Node(value)
+            self.tail = self.head
             return
-
-        node = self.head
-        while node.next:
-            node = node.next
-
-        node.next = Node(value)
+ 
+        self.tail.next = Node(value)
+        self.tail = self.tail.next
 
     def size(self):
         size = 0
@@ -38,7 +35,6 @@ class LinkedList:
         while node:
             size += 1
             node = node.next
-
         return size
     
     def to_list(self):
@@ -50,20 +46,7 @@ class LinkedList:
             current_node = current_node.next
 
         return target_list
-    
-    def build_from_list_or_set(self, sample):
-        if len(sample) == 0:
-            return
-        current_node = self.head
-        for item in sample:
-            if current_node is None:
-                current_node = Node(value = item)
-            else:
-                current_node.value = item
-            pre_node = Node()
-            pre_node.next = current_node
-            current_node = pre_node
-        self.head = current_node.next
+
 
 def union(llist_1, llist_2):
     list_1 = llist_1.to_list()
@@ -71,7 +54,8 @@ def union(llist_1, llist_2):
 
     union_set = set(list_1) | set(list_2)
     union_llist = LinkedList()
-    union_llist.build_from_list_or_set(union_set)
+    for item in union_set:
+        union_llist.append(item)
     return union_llist
 
 def intersection(llist_1, llist_2):
@@ -82,7 +66,8 @@ def intersection(llist_1, llist_2):
     intsec_set = set(list_1) & set(list_2)
 
     intsec_llist = LinkedList()
-    intsec_llist.build_from_list_or_set(intsec_set)
+    for item in intsec_set:
+        intsec_llist.append(item)
     return intsec_llist
 
 
@@ -101,9 +86,9 @@ for i in element_2:
     linked_list_2.append(i)
 
 print (union(linked_list_1, linked_list_2))
-# 21 -> 11 -> 9 -> 1 -> 6 -> 4 -> 3 -> 35 -> 2 -> 65 -> 32 ->
+# 32 -> 65 -> 2 -> 3 -> 4 -> 6 -> 1 -> 9 -> 11 -> 35 -> 21 -> 
 print (intersection(linked_list_1,linked_list_2))
-# 6 -> 21 -> 4 ->
+# 4 -> 21 -> 6 -> 
 
 # Test case 2
 
@@ -120,7 +105,7 @@ for i in element_2:
     linked_list_4.append(i)
 
 print (union(linked_list_3,linked_list_4))
-# 23 -> 21 -> 11 -> 9 -> 8 -> 7 -> 1 -> 6 -> 4 -> 3 -> 35 -> 2 -> 65 -> 
+# 65 -> 2 -> 3 -> 4 -> 6 -> 1 -> 8 -> 9 -> 7 -> 11 -> 35 -> 21 -> 23 -> 
 print (intersection(linked_list_3,linked_list_4))
 # 
 
@@ -139,7 +124,7 @@ for i in element_2:
     linked_list_6.append(i)
 
 print(union(linked_list_5, linked_list_6))
-# 7 -> 4 -> 10 -> 2 -> 
+# 2 -> 4 -> 10 -> 7 -> 
 print(intersection(linked_list_5, linked_list_6))
 #
 

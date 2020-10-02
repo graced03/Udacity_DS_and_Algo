@@ -1,8 +1,8 @@
 ### Problem 1
-For this problem, I decided to use a Queue strcture which allows me to add new element to the end of the queue and pop out the first element in the queue (which is also the least visited element) when it's full.
+For this problem, I decided to use a OrderDict() strcture which allows me to add new element to the end of the dictionary and pop out the first element in the dictionary (which is also the least visited element) when it's full.
 
-Using the queue structure also satifies the requirement that all operations (including get(), and set()) has a time complexity of __O(1)__, given the dequeue() and enqueue() operations of Queue is __O(1)__.
-The space complexity if __O(n)__ since the cache requires a max capacity of n.
+Using the queue structure also satifies the requirement that all operations (including get(), and set()) has a time complexity of __O(1)__, given the pop() and popitem() operations of OrderDict is __O(1)__.
+The space complexity is __O(n)__ since the cache requires a max capacity of n.
 
 ### Problem 2
 Here I use a recursive function to find all nested files with a desired pattern under a directory.
@@ -16,8 +16,8 @@ The space complexity of encoding and decoding is __O(n)__, which is linearly dep
 
 ### Problem 4
 Here I also use a recursive function which will search into the encapsulated structure.
-The time complexity depends on the number of recursive iterations, which is essentially __O(G*U)__, where G: the number of groups, U: the number of users.
-The space complexity is __O(1)__ since we only need one bool variable indicating the existency of the target user in the group. 
+The time complexity depends on the number of recursive iterations, and in the worst case it would be equal to the number of subgroups of the target group. Therefore, the time complexity is essentially __O(n)__.
+The space complexity is also __O(n)__ counting the stack space into account, which increases linearly as the increase in the number of groups. 
 
 ### Problem 5
 The blockchain is essentially a linked list but the list is traversed backwards and has the attribute of immutability.
@@ -28,11 +28,12 @@ The space complexity if __O(n)__, which is linearly dependent on the size of the
 
 ### Problem 6
 For this problem, I use a linked list and employ the in-build set object from python to help complete the union and intersection operation for two linked list.
+Based on the spoiled code, I also maintain tail point of the linked list so that the append() function will have a complexity of __O(n)__.
 
-In terms of time complexity, for both union and intersection, we need to convert the two linked list to a plain list first and, in the end, we also need to build a linked list based on the union and intersection list. The above operation has a time complexity of __O(n+m)__ as we have to traverse the list/linked list. 
+In terms of time complexity, for both union and intersection, we need to convert the two linked list to a plain list first, and in the end, we also need to build a linked list based on the union and intersection list. The above operation has a time complexity of __O(n+m)__ as we have to traverse the list/linked list. 
 
 For python set, union will take __O(n+m)__ whereas intersection will take O(min(n, m)) in the worst case. 
 
 Therefore, in this problem, both the union and the intersection has a time complexity of __O(n+m)__.
 
-The space complexity is __O(n)__ which is linearly dependent on the sizes of the two input linked list.
+The space complexity is __O(n+m)__ which is linearly dependent on the sizes of the two input linked list.

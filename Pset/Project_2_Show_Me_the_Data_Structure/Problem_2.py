@@ -19,7 +19,6 @@ def find_files(suffix, path):
        a list of paths
     """
     target_file_list = []
-    path_list = []
     
     if len(os.listdir(path)) == 0:  # Stopping condition
         return []
@@ -30,11 +29,8 @@ def find_files(suffix, path):
             if item.endswith("." + suffix):
                 target_file_list.append(item)
         else:
-            path_list.append(os.path.join(item))
-    
-    for path_item in path_list:
-        target_file_list.extend(find_files(suffix, path_item))
-    
+            target_file_list.extend(find_files(suffix, item))
+
     return target_file_list
 
 # Testing

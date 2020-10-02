@@ -75,8 +75,7 @@ class HuffmanEncoder:
 #         print(self.reverse_mapping)
     
     def get_encoded_text(self):
-        self.code = self.create_codes()
-
+        self.create_codes()
         encoded_text = ""
         for character in self.data:
             encoded_text += self.codes[character]
